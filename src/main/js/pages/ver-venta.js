@@ -3,27 +3,27 @@ const { Link, useParams } = require('react-router-dom');
 const {useState, useEffect} = require('react');
 const client = require('../client');
 
-const VerMusicoPage = () => {
+const VerVentaPage = () => {
 
     let { id } = useParams();
-    const [musico, setMusico] = useState({});
+    const [venta, setVenta] = useState({});
 
     useEffect(() => {
         client({
             method: 'GET',
-            path: '/api/musicos/' + id
-        }).done(response=>setMusico(response.entity))
+            path: '/api/ventas/' + id
+        }).done(response=>setVenta(response.entity))
     }, [])
 
 
     return (
         <>
-            <h1>Ver Musico</h1>
+            <h1>Ver Venta</h1>
 
             <table>
                 <tr>
-                    <th>Nombre</th>
-                    <td>{musico.nombre}</td>
+                    <th>Total</th>
+                    <td>{venta.total}</td>
                 </tr>
             </table>
 
@@ -33,4 +33,4 @@ const VerMusicoPage = () => {
 
 }
 
-module.exports = VerMusicoPage;
+module.exports = VerVentaPage;

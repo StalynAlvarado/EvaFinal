@@ -7,15 +7,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
 @Entity
-public class Banda {
+public class Venta {
 
 	private @Id @GeneratedValue Long id;
-	private String nombre;
+	private float total;
 
-	private Banda() {}
+	private Venta() {}
 
-	public Banda(String nombre) {
-		this.nombre = nombre;
+	public Venta(float total) {
+		this.total = total;
 	}
 
 	
@@ -24,23 +24,23 @@ public class Banda {
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
-		Banda banda = (Banda) o;
-		return Objects.equals(id, banda.id) &&
-			Objects.equals(nombre, banda.nombre);
+		Venta venta = (Venta) o;
+		return Objects.equals(id, venta.id) &&
+			Objects.equals(total, venta.total);
 	}
 
 	@Override
 	public int hashCode() {
 
-		return Objects.hash(id, nombre);
+		return Objects.hash(id, total);
 	}
 
 
 	@Override
 	public String toString() {
-		return "Banda{" +
+		return "Venta{" +
 			"id=" + id +
-			", nombre='" + nombre + '\'' +
+			", total='" + total + '\'' +
 			'}';
 	}
 
@@ -52,12 +52,12 @@ public class Banda {
 		this.id = id;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public float geTotal() {
+		return total;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setTotal(float total) {
+		this.total = total;
 	}
 
 }
